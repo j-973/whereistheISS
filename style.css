@@ -1,7 +1,7 @@
 body {
 	background-color: #eee8d5;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 24px;
+	font-size: 1.5rem;
 }
 
 #wrapper {
@@ -23,7 +23,7 @@ header {
 	h1 {
 		font-family: 'Iceland', cursive;
 		text-decoration: underline;
-		font-size: 54px;
+		font-size: 3.375rem;
 	}
 
 figure {
@@ -51,12 +51,12 @@ main {
 	}
 
 	#issMap {
-		height: 240%;
+		height: 24rem; 
 	}
 
 footer {
 	grid-area: footer;
-	font-size: 16px;
+	font-size: 1rem;
 	font-style: italic;
 	text-align: center;
 }

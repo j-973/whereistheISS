@@ -34,7 +34,7 @@ async function getISS() {
 	const data = await response.json(); //parses the APIs response in the JSON format so it can be used as a JS object
 	const { latitude, longitude } = data; //destructuring the latitude and longitude values from the JSON response into their respective variables
 
-	issMap.setView([latitude, longitude], issMap.getZoom()); //sets the view level to current zoom level
+	issMap.setView([latitude, longitude], issMap.getZoom()); //sets the view to current zoom level
 	marker.setLatLng([latitude, longitude]); //updates marker position to current lat,long coords of ISS
 
 	document.getElementById('lat').textContent = latitude.toFixed(5); //placing the lat and lon values as text into their IDed html tags
