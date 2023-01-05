@@ -11,10 +11,8 @@ body {
 	grid-template-columns: 200px 200px 200px 200px;
 	grid-template-rows: auto;
 	grid-template-areas: 
-	"header header header header"
-	". figure figure ."
-	". main main ."
-	". main main ."
+	"header header header figure"
+	"main main main main"
 	"footer footer footer footer";
 }
 
@@ -50,6 +48,10 @@ main {
 	span {
 		font-family: 'Source Code Pro', monospace;
 		font-weight: bold;
+	}
+
+	#issMap {
+		height: 240%;
 	}
 
 footer {
