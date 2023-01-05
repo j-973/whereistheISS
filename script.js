@@ -1,5 +1,5 @@
 //using leafletjs library to set initial map view to the center of the map, zoomed out
-const issMap = L.map('issMap').setView([0, 0], 1); 
+const issMap = L.map('issMap').setView([0, 0], 4); 
 
 const attribution = 
 	{
@@ -19,7 +19,13 @@ const issIcon = L.icon({
     iconAnchor:   [25, 16], //where marker displays, is centered on the icon 
 });
 
-const marker = L.marker([0, 0], { icon: issIcon }).addTo(issMap); //setting marker to initial value of 0,0 lat long
+const markerOptions = {
+	alt: 'ISS', //alt text
+	icon: issIcon,
+	autoPanOnFocus: true //pans map to fit to the marker when focused (i.e. hitting tab)
+}
+
+const marker = L.marker([0, 0], markerOptions).addTo(issMap); //setting marker to initial value of 0,0 lat long
 
 const iss_api_URL = 'https://api.wheretheiss.at/v1/satellites/25544'; //the link to the data I am fetching
 
@@ -28,11 +34,12 @@ async function getISS() {
 	const data = await response.json(); //parses the APIs response in the JSON format so it can be used as a JS object
 	const { latitude, longitude } = data; //destructuring the latitude and longitude values from the JSON response into their respective variables
 
+	issMap.setView([latitude, longitude], issMap.getZoom()); //sets the view level to current zoom level
 	marker.setLatLng([latitude, longitude]); //updates marker position to current lat,long coords of ISS
 
-	document.getElementById('lat').textContent = latitude; //placing the lat and lon values as text into their IDed html tags
-	document.getElementById('lon').textContent = longitude;
+	document.getElementById('lat').textContent = latitude.toFixed(5); //placing the lat and lon values as text into their IDed html tags
+	document.getElementById('lon').textContent = longitude.toFixed(5);
 } 
 
-
 getISS(); //calling the function
+setInterval(getISS, 2000); //calls getISS function every 2000 milliseconds
